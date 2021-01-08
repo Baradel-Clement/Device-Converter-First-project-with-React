@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Import Local
+import Currency from './Currency';
+
 import './currencies.scss';
 
 const Currencies = ({ currenciesList }) => (
@@ -10,7 +13,7 @@ const Currencies = ({ currenciesList }) => (
       {
         currenciesList.map(
           (currency) => (
-            <li key={currency.name} className="currencies__list__item">{currency.name}</li>
+            <Currency key={currency.name} {...currency} />
           ),
         )
       }
@@ -22,7 +25,6 @@ Currencies.propTypes = {
   currenciesList: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      rate: PropTypes.number.isRequired,
     }).isRequired,
   ).isRequired,
 };
