@@ -9,6 +9,7 @@ import './converter.scss';
 import Header from 'src/components/Header';
 import Currencies from 'src/components/Currencies';
 import Result from 'src/components/Result';
+import Toggler from 'src/components/Toggler';
 
 import currenciesListData from 'src/data/currencies';
 
@@ -26,7 +27,7 @@ class Converter extends React.Component {
     // appeller le constructeur de mon parent
     super(props);
 
-    //Ici, on donne l'état initial de notre composant
+    // Ici, on donne l'état initial de notre composant
     this.state = {
       open: true,
     };
@@ -36,11 +37,11 @@ class Converter extends React.Component {
   }
 
   toggle() {
-    // Ici, on aimerait modifier l'état (le state) de note composant 
+    // Ici, on aimerait modifier l'état (le state) de note composant
     // Pour provoquer un nouveau rendu
-    
+
     this.setState({
-      open: !this.state.open
+      open: !this.state.open,
     });
   }
 
@@ -52,13 +53,14 @@ class Converter extends React.Component {
     // cf exo sur la destructuration E02 (exo 6 ou 7 du parcours)
     const { open } = this.state;
 
+    // Ici, toute l'intelligence reside dans ce composant, on passe
+    // seulement à Toggler son état actuel et ce qui devra se produire
+    // au click.
     return (
 
       <div className="converter">
-        <button type="button" onClick={this.toggle}>
-          {open ? 'ferme' : 'ouvre'}
-        </button>
         <Header baseAmount={1} />
+        <Toggler isOpen={open} manageClick={this.toggle} />
         {
             // Ici, ce qui est situé à droite du && ne sera exécuté que si open est vrai.
             // En effet quand javascript analyse une condition du type
