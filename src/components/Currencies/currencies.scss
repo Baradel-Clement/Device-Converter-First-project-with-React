@@ -3,6 +3,9 @@
 .currencies{
   background-color: vars.$color-light;
 
+  height:60vh;
+  overflow-y: auto;
+
   &__title{
     font-weight: 700;
     padding: vars.$gutter;
