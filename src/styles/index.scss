@@ -1,8 +1,15 @@
+// Ce fichier est prévu pour appliquer des styles généraux.
+// Principalement sur le body...
 @use 'reset';
+// j'indique que j'utilise le fichier qui contient la variable
 @use 'vars';
 
 body {
-  font-family: sans-serif;
+  // j'utilise la variable
+  font-family: vars.$font;
+  background-color: vars.$color-alt;
+  font-weight:300;
+  color: vars.$color;
 }
 
 /* 

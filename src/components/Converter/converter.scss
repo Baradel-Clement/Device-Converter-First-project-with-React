@@ -1,4 +1,6 @@
+@use 'src/styles/vars';
+
 .converter {
-  width: 500px;
-  margin: 1em auto;  
+  width: 300px;
+  margin: vars.$gutter auto;  
 }
