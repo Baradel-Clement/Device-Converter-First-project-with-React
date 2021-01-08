@@ -6,12 +6,13 @@ import './converter.scss';
 
 // == Import local
 import Header from 'src/components/Header';
+import Currencies from 'src/components/Currencies';
 
 // == Composant
 const Converter = () => (
   <div className="converter">
     <Header />
-    <div>Currencies</div>
+    <Currencies />
     <div>Result</div>
   </div>
 );
