@@ -12,7 +12,7 @@ import Result from 'src/components/Result';
 // == Composant
 const Converter = () => (
   <div className="converter">
-    <Header />
+    <Header baseAmount={1} />
     <Currencies />
     <Result />
   </div>
