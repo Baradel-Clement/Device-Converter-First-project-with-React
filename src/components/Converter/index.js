@@ -14,7 +14,7 @@ const Converter = () => (
   <div className="converter">
     <Header baseAmount={1} />
     <Currencies />
-    <Result />
+    <Result amount={1.09} currency="USD" />
   </div>
 );
 
