@@ -1,0 +1,17 @@
+@use 'src/styles/vars';
+
+.result {
+  background-color: vars.$color-light;
+  padding: vars.$gutter * 2 0;
+  text-align: center;
+
+  &__amount {
+    font-weight: bold;
+    font-size: 2em;
+  }
+
+  &__currency {
+    font-size: 1.3em;
+    margin-top: vars.$gutter;
+  }
+}
