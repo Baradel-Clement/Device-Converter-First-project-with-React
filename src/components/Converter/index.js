@@ -30,10 +30,14 @@ class Converter extends React.Component {
     // Ici, on donne l'état initial de notre composant
     this.state = {
       open: true,
+      rateCurrency: 1.09,
+      nameCurrency: 'United States Dollar',
+      baseAmount: 1,
     };
 
     // Ici on lie à notre méthode toggle l'objet courant
     this.toggle = this.toggle.bind(this);
+    this.onClickCurrency = this.onClickCurrency.bind(this);
   }
 
   toggle() {
@@ -45,6 +49,13 @@ class Converter extends React.Component {
     });
   }
 
+  onClickCurrency(rateCurrency, nameCurrency) {
+    this.setState({
+      rateCurrency: rateCurrency,
+      nameCurrency: nameCurrency,
+    })
+  }
+
   // la méthode render est appelée pour générer l'affichage du composant
   render() {
     // Ici, on destructure l'objet this.state et on récupère
@@ -52,6 +63,9 @@ class Converter extends React.Component {
     // variable nommée open.
     // cf exo sur la destructuration E02 (exo 6 ou 7 du parcours)
     const { open } = this.state;
+    const { rateCurrency } = this.state;
+    const { nameCurrency } = this.state;
+    const { baseAmount } = this.state;
 
     // Ici, toute l'intelligence reside dans ce composant, on passe
     // seulement à Toggler son état actuel et ce qui devra se produire
@@ -59,7 +73,7 @@ class Converter extends React.Component {
     return (
 
       <div className="converter">
-        <Header baseAmount={1} />
+        <Header baseAmount={baseAmount} />
         <Toggler isOpen={open} manageClick={this.toggle} />
         {
             // Ici, ce qui est situé à droite du && ne sera exécuté que si open est vrai.
@@ -68,9 +82,9 @@ class Converter extends React.Component {
             // d'aller vérifier la validité de n_importe_quoi_d_autre.
             // De toute les manière, l'expression vaudra faux.
             // Donc, le composant n'est pas appelé -> il ne s'affiche pas.
-            open && <Currencies currenciesList={currenciesListData} />
+            open && <Currencies currenciesList={currenciesListData} onClickCurrency={this.onClickCurrency} />
           }
-        <Result amount={1.09} currency="USD" />
+        <Result amount={Math.round(((rateCurrency * baseAmount) * 100)) / 100} currency={nameCurrency} />
       </div>
     );
   }
